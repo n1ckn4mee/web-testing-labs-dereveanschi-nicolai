@@ -1,0 +1,29 @@
+name: Local training shop tests
+on: [push, pull_request]
+permissions:
+  contents: read
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+      - uses: actions/setup-python@v7
+        with:
+          python-version: '3.12'
+      - run: python -m pip install -r requirements.txt
+      - name: Start local app and execute suite
+        env:
+          CI: 'true'
+        run: |
+          export LAB_TEST_PASSWORD="$(python -c 'import secrets; print(secrets.token_urlsafe(24))')"
+          echo "::add-mask::$LAB_TEST_PASSWORD"
+          python app/server.py > server.log 2>&1 &
+          python -c "import urllib.request,time; time.sleep(2); urllib.request.urlopen('http://127.0.0.1:8010/api/state')"
+          python -m pytest -v --junit-xml=results.xml --html=report.html --self-contained-html
+      - uses: actions/upload-artifact@v7
+        if: always()
+        with:
+          name: rapoarte
+          path: |
+            report.html
+            results.xml
