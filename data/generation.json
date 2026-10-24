@@ -1,0 +1,12 @@
+{
+  "ru_RU": {
+    "rows": 10,
+    "same_seed_equal": true,
+    "sha256": "c8d4b13d9119feaa2a554555b2515589e69a8a26909dc599e39204726d6710dc"
+  },
+  "ro_RO": {
+    "rows": 10,
+    "same_seed_equal": true,
+    "sha256": "3fdcca2798b065c7707aa878c59363ee0ddeca55d28ffdcf33e6dd7ccc3a3e0a"
+  }
+}
