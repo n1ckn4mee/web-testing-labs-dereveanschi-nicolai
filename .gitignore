@@ -1,0 +1,11 @@
+.venv/
+profiles/
+__pycache__/
+.pytest_cache/
+evidence/
+*.log
+*.xml
+*.html
+!app/index.html
+*.jsonl
+runtime-secret.txt
