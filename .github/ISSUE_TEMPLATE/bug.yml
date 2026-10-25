@@ -1,0 +1,42 @@
+name: Отчёт о дефекте
+description: Учебный дефект локального приложения
+title: '[Учебный дефект]: '
+labels: [bug]
+body:
+  - type: input
+    id: test_case
+    attributes:
+      label: ID тестового сценария
+    validations:
+      required: true
+  - type: textarea
+    id: environment
+    attributes:
+      label: Среда и локальный объект
+    validations:
+      required: true
+  - type: textarea
+    id: steps
+    attributes:
+      label: Шаги воспроизведения
+    validations:
+      required: true
+  - type: textarea
+    id: expected
+    attributes:
+      label: Ожидаемый результат
+    validations:
+      required: true
+  - type: textarea
+    id: actual
+    attributes:
+      label: Фактический результат и доказательства
+    validations:
+      required: true
+  - type: dropdown
+    id: severity
+    attributes:
+      label: Критичность
+      options: [Критическая, Высокая, Средняя, Косметическая]
+    validations:
+      required: true
